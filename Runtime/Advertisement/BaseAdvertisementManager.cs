@@ -61,7 +61,8 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="success">展示成功回调</param>
         /// <param name="fail">展示失败回调</param>
         /// <param name="onShowResult">展示结果回调</param>
-        public abstract void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult);
+        /// <param name="customData">自定义数据</param>
+        public abstract void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null);
 
         /// <summary>
         /// 加载广告

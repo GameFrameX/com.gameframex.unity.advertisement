@@ -27,7 +27,8 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="success">展示成功回调,参数为成功信息</param>
         /// <param name="fail">展示失败回调,参数为失败原因</param>
         /// <param name="onShowResult">展示结果回调,true表示用户完整观看广告,false表示用户跳过广告</param>
-        void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult);
+        /// <param name="customData">自定义数据</param>
+        void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null);
 
         /// <summary>
         /// 加载广告
