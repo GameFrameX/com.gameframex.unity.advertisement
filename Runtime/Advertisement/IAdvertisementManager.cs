@@ -35,6 +35,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="success">加载成功回调,参数为成功信息</param>
         /// <param name="fail">加载失败回调,参数为失败原因</param>
-        void Load(Action<string> success, Action<string> fail);
+        /// <param name="customData">自定义数据</param>
+        void Load(Action<string> success, Action<string> fail, string customData = null);
     }
 }
