@@ -43,7 +43,8 @@ namespace GameFrameX.Advertisement.Runtime
         /// 初始化广告管理器
         /// </summary>
         /// <param name="adUnitId">广告单元ID</param>
-        public abstract void Initialize(string adUnitId);
+        /// <param name="debug">是否开启调试模式</param>
+        public abstract void Initialize(string adUnitId, bool debug = false);
 
         /// <summary>
         /// 设置额外数据
