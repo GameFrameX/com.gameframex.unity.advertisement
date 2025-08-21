@@ -37,6 +37,11 @@ namespace GameFrameX.Advertisement.Runtime
         [SerializeField] private string m_adUnitIdWebGLDouYin = string.Empty;
 
         /// <summary>
+        /// 是否是测试模式
+        /// </summary>
+        [SerializeField] private bool m_debug = false;
+
+        /// <summary>
         /// 广告位ID
         /// </summary>
         public string AdUnitId { get; private set; }
@@ -75,7 +80,7 @@ namespace GameFrameX.Advertisement.Runtime
 
         private void Start()
         {
-            _advertisementManager.Initialize(AdUnitId);
+            _advertisementManager.Initialize(AdUnitId, m_debug);
         }
 
         /// <summary>
