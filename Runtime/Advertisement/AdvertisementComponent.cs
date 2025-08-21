@@ -1,30 +1,45 @@
 ﻿using System;
-using GameFrameX.Event.Runtime;
 using GameFrameX.Runtime;
 using UnityEngine;
 
 namespace GameFrameX.Advertisement.Runtime
 {
     /// <summary>
-    /// Mono 组件
+    /// Advertisement 组件
     /// </summary>
     [DisallowMultipleComponent]
     [AddComponentMenu("Game Framework/Advertisement")]
     public class AdvertisementComponent : GameFrameworkComponent
     {
         /// <summary>
-        /// 广告位ID
+        /// 广告位ID Android
         /// </summary>
-        [SerializeField] private string m_adUnitId = string.Empty;
+        [SerializeField] private string m_adUnitIdAndroid = string.Empty;
+
+        /// <summary>
+        /// 广告位ID iOS
+        /// </summary>
+        [SerializeField] private string m_adUnitIdiOS = string.Empty;
+
+        /// <summary>
+        /// 广告位ID WebGL
+        /// </summary>
+        [SerializeField] private string m_adUnitIdWebGL = string.Empty;
+
+        /// <summary>
+        /// 广告位ID WebGL
+        /// </summary>
+        [SerializeField] private string m_adUnitIdWebGLWeChat = string.Empty;
+
+        /// <summary>
+        /// 广告位ID WebGL
+        /// </summary>
+        [SerializeField] private string m_adUnitIdWebGLDouYin = string.Empty;
 
         /// <summary>
         /// 广告位ID
         /// </summary>
-        public string AdUnitId
-        {
-            get => m_adUnitId;
-            set => m_adUnitId = value;
-        }
+        public string AdUnitId { get; private set; }
 
         private IAdvertisementManager _advertisementManager;
 
@@ -39,6 +54,23 @@ namespace GameFrameX.Advertisement.Runtime
                 Log.Fatal("Advertisement manager is invalid.");
                 return;
             }
+
+            AdUnitId =
+#if UNITY_WEBGL
+        m_adUnitIdWebGL
+#if ENABLE_WECHAT_MINI_GAME
+        m_adUnitIdWebGLWeChat
+#elif ENABLE_DOUYIN_MINI_GAME
+        m_adUnitIdWebGLDouYin
+#else
+        m_adUnitIdWebGL
+#endif
+#elif UNITY_ANDROID
+                m_adUnitIdAndroid
+#elif UNITY_IOS
+                m_adUnitIdiOS
+#endif
+                ;
         }
 
         private void Start()
