@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/GameFrameX/com.gameframex.unity.advertisement/tree/1.1.0) (2025-08-21)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.advertisement/compare/1.0.2...1.1.0)
+
+## [1.0.2](https://github.com/GameFrameX/com.gameframex.unity.advertisement/tree/1.0.2) (2025-08-08)
+
+[Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.advertisement/compare/1.0.1...1.0.2)
+
+**Merged pull requests:**
+
+- 修改版本号 [\#3](https://github.com/GameFrameX/com.gameframex.unity.advertisement/pull/3) ([Eternity714](https://github.com/Eternity714))
+- 移除对EventComponent的依赖 [\#2](https://github.com/GameFrameX/com.gameframex.unity.advertisement/pull/2) ([Eternity714](https://github.com/Eternity714))
+
 ## [1.0.1](https://github.com/GameFrameX/com.gameframex.unity.advertisement/tree/1.0.1) (2025-05-30)
 
 [Full Changelog](https://github.com/GameFrameX/com.gameframex.unity.advertisement/compare/1.0.0...1.0.1)
