@@ -74,6 +74,8 @@ namespace GameFrameX.Advertisement.Runtime
                 m_adUnitIdAndroid
 #elif UNITY_IOS
                 m_adUnitIdiOS
+#else
+                string.Empty
 #endif
                 ;
         }
