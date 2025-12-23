@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.1.0...1.2.0) (2025-12-23)
+
+
+### Features
+
+* **ci:** change ci ([34558a8](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/34558a8787cb394f30a233c8fe478907375b9c21))
+
 # Changelog
 
 ## [1.1.0](https://github.com/GameFrameX/com.gameframex.unity.advertisement/tree/1.1.0) (2025-08-21)
