@@ -62,7 +62,6 @@ namespace GameFrameX.Advertisement.Runtime
 
             AdUnitId =
 #if UNITY_WEBGL
-        m_adUnitIdWebGL
 #if ENABLE_WECHAT_MINI_GAME
         m_adUnitIdWebGLWeChat
 #elif ENABLE_DOUYIN_MINI_GAME
