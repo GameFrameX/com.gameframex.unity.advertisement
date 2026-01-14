@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.2.0...1.2.1) (2026-01-14)
+
+
+### Bug Fixes
+
+* **Advertisement:** 移除未使用的WebGL广告单元ID变量 ([0231fa9](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/0231fa914057cba3fcdf5ab78d509c189d93961f))
+
 # [1.2.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.1.0...1.2.0) (2025-12-23)
 
 
