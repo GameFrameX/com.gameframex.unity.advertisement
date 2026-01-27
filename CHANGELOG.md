@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.2.1...1.3.0) (2026-01-27)
+
+
+### Features
+
+* **广告:** 添加播放广告接口 ([8f6b0e4](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/8f6b0e4f9de833b0a638ad45a71557bd1d2fe7c2))
+
 ## [1.2.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.2.0...1.2.1) (2026-01-14)
 
 
