@@ -114,6 +114,20 @@ namespace GameFrameX.Advertisement.Runtime
         }
 
         /// <summary>
+        /// 展示广告
+        /// </summary>
+        /// <param name="onShowResult">展示成功后广告关闭回调。参数值为true表示广告应该发放奖励，为false表示没有完整播放完广告</param>
+        /// <param name="customData">自定义数据</param>
+        /// <remarks>
+        /// 在调用此方法前，请确保已经通过Load方法预加载了广告
+        /// onShowResult回调的布尔值表示广告是否完整观看（true为完整观看并可获得奖励，false为未完整观看）
+        /// </remarks>
+        public void Play(Action<bool> onShowResult, string customData = null)
+        {
+            _advertisementManager.Play(onShowResult, customData);
+        }
+
+        /// <summary>
         /// 加载广告
         /// </summary>
         /// <param name="success">加载成功回调</param>

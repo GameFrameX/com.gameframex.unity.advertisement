@@ -22,6 +22,13 @@ namespace GameFrameX.Advertisement.Runtime
         void SetExtraData(string key, string value);
 
         /// <summary>
+        /// 播放广告
+        /// </summary>
+        /// <param name="customData">自定义数据</param>
+        /// <param name="playResult">播放结果回调</param>
+        void Play(Action<bool> playResult, string customData = null);
+
+        /// <summary>
         /// 展示广告
         /// </summary>
         /// <param name="success">展示成功回调,参数为成功信息</param>
