@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.0...1.3.1) (2026-03-02)
+
+
+### Bug Fixes
+
+* **Advertisement:** 修复抖音小游戏平台广告单元ID的缩进 ([515aedf](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/515aedfae4bd64f04307b15509a359323a1b0720))
+
 # [1.3.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.2.1...1.3.0) (2026-01-27)
 
 
