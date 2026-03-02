@@ -65,7 +65,7 @@ namespace GameFrameX.Advertisement.Runtime
 #if ENABLE_WECHAT_MINI_GAME
         m_adUnitIdWebGLWeChat
 #elif ENABLE_DOUYIN_MINI_GAME
-        m_adUnitIdWebGLDouYin
+                m_adUnitIdWebGLDouYin
 #else
         m_adUnitIdWebGL
 #endif
@@ -82,6 +82,17 @@ namespace GameFrameX.Advertisement.Runtime
         private void Start()
         {
             _advertisementManager.Initialize(AdUnitId, m_debug);
+        }
+
+        /// <summary>
+        /// 初始化广告
+        /// </summary>
+        /// <param name="adUnitId">广告位ID</param>
+        /// <param name="isDebug">是否是测试模式</param>
+        public void Initialize(string adUnitId, bool isDebug = false)
+        {
+            AdUnitId = adUnitId;
+            _advertisementManager.Initialize(AdUnitId, isDebug);
         }
 
         /// <summary>
