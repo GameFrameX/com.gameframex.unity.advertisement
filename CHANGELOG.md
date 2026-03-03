@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.1...1.3.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **advertisement:** 添加Preserve特性以防止代码剥离 ([0cc1146](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/0cc1146659dac24ae3d137c0d12e50b987791d5d))
+
 ## [1.3.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.0...1.3.1) (2026-03-02)
 
 
