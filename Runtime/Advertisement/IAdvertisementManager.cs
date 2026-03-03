@@ -1,10 +1,12 @@
 using System;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
     /// <summary>
     /// 广告管理器接口
     /// </summary>
+    [Preserve]
     public interface IAdvertisementManager
     {
         /// <summary>
@@ -12,6 +14,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="adUnitId">广告单元ID</param>
         /// <param name="isDebug">是否是调试模式</param>
+        [Preserve]
         void Initialize(string adUnitId, bool isDebug = false);
 
         /// <summary>
@@ -19,6 +22,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="key">数据键</param>
         /// <param name="value">数据值</param>
+        [Preserve]
         void SetExtraData(string key, string value);
 
         /// <summary>
@@ -26,6 +30,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="customData">自定义数据</param>
         /// <param name="playResult">播放结果回调</param>
+        [Preserve]
         void Play(Action<bool> playResult, string customData = null);
 
         /// <summary>
@@ -35,6 +40,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="fail">展示失败回调,参数为失败原因</param>
         /// <param name="onShowResult">展示结果回调,true表示用户完整观看广告,false表示用户跳过广告</param>
         /// <param name="customData">自定义数据</param>
+        [Preserve]
         void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null);
 
         /// <summary>
@@ -43,6 +49,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="success">加载成功回调,参数为成功信息</param>
         /// <param name="fail">加载失败回调,参数为失败原因</param>
         /// <param name="customData">自定义数据</param>
+        [Preserve]
         void Load(Action<string> success, Action<string> fail, string customData = null);
     }
 }

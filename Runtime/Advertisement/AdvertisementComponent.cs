@@ -1,6 +1,7 @@
 ﻿using System;
 using GameFrameX.Runtime;
 using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -89,6 +90,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="adUnitId">广告位ID</param>
         /// <param name="isDebug">是否是测试模式</param>
+        [Preserve]
         public void Initialize(string adUnitId, bool isDebug = false)
         {
             AdUnitId = adUnitId;
@@ -103,6 +105,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// 用于在展示广告前设置一些额外的参数数据，这些数据可能会被广告SDK使用
         /// </remarks>
+        [Preserve]
         public void SetExtraData(string key, string value)
         {
             _advertisementManager.SetExtraData(key, value);
@@ -119,6 +122,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// success回调会返回广告展示相关的信息字符串
         /// fail回调会返回失败原因字符串
         /// </remarks>
+        [Preserve]
         public void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult)
         {
             _advertisementManager.Show(success, fail, onShowResult);
@@ -133,6 +137,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// 在调用此方法前，请确保已经通过Load方法预加载了广告
         /// onShowResult回调的布尔值表示广告是否完整观看（true为完整观看并可获得奖励，false为未完整观看）
         /// </remarks>
+        [Preserve]
         public void Play(Action<bool> onShowResult, string customData = null)
         {
             _advertisementManager.Play(onShowResult, customData);
@@ -148,6 +153,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// success回调会返回广告加载成功的相关信息字符串
         /// fail回调会返回加载失败的原因字符串
         /// </remarks>
+        [Preserve]
         public void Load(Action<string> success, Action<string> fail)
         {
             _advertisementManager.Load(success, fail);
