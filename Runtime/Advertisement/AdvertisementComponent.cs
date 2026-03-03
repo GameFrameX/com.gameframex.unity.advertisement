@@ -9,7 +9,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// Advertisement 组件
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("Game Framework/Advertisement")]
+    [AddComponentMenu("GameFrameX/Advertisement")]
     public class AdvertisementComponent : GameFrameworkComponent
     {
         /// <summary>
