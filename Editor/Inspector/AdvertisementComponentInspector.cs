@@ -20,6 +20,7 @@ namespace GameFrameX.Advertisement.Editor
         private SerializedProperty m_adUnitIdWebGL = null;
         private SerializedProperty m_adUnitIdWebGLWeChat = null;
         private SerializedProperty m_adUnitIdWebGLDouYin = null;
+        private SerializedProperty m_adUnitIdWebGLKuaiShou = null;
         private SerializedProperty m_debug = null;
         private GUIContent m_debugGUIContent = new GUIContent("是否是测试模式");
         private GUIContent m_adUnitIdAndroidGUIContent = new GUIContent("Android 广告位ID");
@@ -27,6 +28,7 @@ namespace GameFrameX.Advertisement.Editor
         private GUIContent m_adUnitIdWebGLGUIContent = new GUIContent("WebGL 广告位ID");
         private GUIContent m_adUnitIdWebGLWeChatGUIContent = new GUIContent("WebGL 微信 广告位ID");
         private GUIContent m_adUnitIdWebGLDouYinGUIContent = new GUIContent("WebGL 抖音 广告位ID");
+        private GUIContent m_adUnitIdWebGLKuaiShouGUIContent = new GUIContent("WebGL 快手 广告位ID");
 
         public override void OnInspectorGUI()
         {
@@ -42,6 +44,7 @@ namespace GameFrameX.Advertisement.Editor
                 EditorGUILayout.PropertyField(m_adUnitIdWebGL, m_adUnitIdWebGLGUIContent);
                 EditorGUILayout.PropertyField(m_adUnitIdWebGLWeChat, m_adUnitIdWebGLWeChatGUIContent);
                 EditorGUILayout.PropertyField(m_adUnitIdWebGLDouYin, m_adUnitIdWebGLDouYinGUIContent);
+                EditorGUILayout.PropertyField(m_adUnitIdWebGLKuaiShou, m_adUnitIdWebGLKuaiShouGUIContent);
             }
             EditorGUI.EndDisabledGroup();
 
@@ -62,6 +65,7 @@ namespace GameFrameX.Advertisement.Editor
             m_adUnitIdWebGL = serializedObject.FindProperty("m_adUnitIdWebGL");
             m_adUnitIdWebGLWeChat = serializedObject.FindProperty("m_adUnitIdWebGLWeChat");
             m_adUnitIdWebGLDouYin = serializedObject.FindProperty("m_adUnitIdWebGLDouYin");
+            m_adUnitIdWebGLKuaiShou = serializedObject.FindProperty("m_adUnitIdWebGLKuaiShou");
             m_debug = serializedObject.FindProperty("m_debug");
         }
     }
