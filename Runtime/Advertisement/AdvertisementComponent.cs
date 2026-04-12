@@ -28,14 +28,19 @@ namespace GameFrameX.Advertisement.Runtime
         [SerializeField] private string m_adUnitIdWebGL = string.Empty;
 
         /// <summary>
-        /// 广告位ID WebGL
+        /// 广告位ID WeChat WebGL
         /// </summary>
         [SerializeField] private string m_adUnitIdWebGLWeChat = string.Empty;
 
         /// <summary>
-        /// 广告位ID WebGL
+        /// 广告位ID Douyin WebGL
         /// </summary>
         [SerializeField] private string m_adUnitIdWebGLDouYin = string.Empty;
+
+        /// <summary>
+        /// 广告位ID Kuaishou WebGL
+        /// </summary>
+        [SerializeField] private string m_adUnitIdWebGLKuaiShou = string.Empty;
 
         /// <summary>
         /// 是否是测试模式
@@ -67,8 +72,10 @@ namespace GameFrameX.Advertisement.Runtime
         m_adUnitIdWebGLWeChat
 #elif ENABLE_DOUYIN_MINI_GAME
                 m_adUnitIdWebGLDouYin
+#elif ENABLE_KUAISHOU_MINI_GAME
+                m_adUnitIdWebGLKuaiShou
 #else
-        m_adUnitIdWebGL
+                m_adUnitIdWebGL
 #endif
 #elif UNITY_ANDROID
                 m_adUnitIdAndroid
