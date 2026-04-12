@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.2...1.4.0) (2026-04-12)
+
+
+### Features
+
+* **editor:** 为广告组件检查器添加快手WebGL广告位ID支持 ([6dc08c8](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/6dc08c8b72e897703d1c359ae44636e4ee8b0535))
+* **广告组件:** 为快手小游戏平台添加WebGL广告位ID支持 ([5453630](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/5453630f2ce38954971c7a9ba0623ecf40b950ad))
+
 ## [1.3.2](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.1...1.3.2) (2026-03-03)
 
 
