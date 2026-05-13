@@ -41,6 +41,9 @@ namespace GameFrameX.Advertisement.Runtime
             _ = typeof(IAdvertisementManager);
             _ = typeof(BaseAdvertisementManager);
             _ = typeof(AdvertisementComponent);
+            _ = typeof(AdvertisementConfig);
+            _ = typeof(AdvertisementConfigAttribute);
+            _ = typeof(AdvertisementPlayOption);
         }
     }
 }
