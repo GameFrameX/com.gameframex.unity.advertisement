@@ -5,6 +5,12 @@ using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
+    /// <summary>
+    /// 广告组件，提供广告初始化、播放和加载的 Unity 组件封装。
+    /// </summary>
+    /// <remarks>
+    /// Advertisement component, providing a Unity component wrapper for ad initialization, playback, and loading.
+    /// </remarks>
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Advertisement")]
     public class AdvertisementComponent : GameFrameworkComponent
@@ -25,8 +31,22 @@ namespace GameFrameX.Advertisement.Runtime
 
         [SerializeReference, SerializeField] private AdvertisementConfig m_config = null;
 
+        /// <summary>
+        /// 获取当前平台的广告位ID。
+        /// </summary>
+        /// <remarks>
+        /// Gets the ad unit ID for the current platform.
+        /// </remarks>
+        /// <value>广告位ID / Ad unit ID</value>
         public string AdUnitId { get; private set; }
 
+        /// <summary>
+        /// 获取或设置广告配置对象。
+        /// </summary>
+        /// <remarks>
+        /// Gets or sets the advertisement configuration object.
+        /// </remarks>
+        /// <value>广告配置对象 / Advertisement configuration object</value>
         public AdvertisementConfig Config
         {
             get => m_config;
@@ -76,6 +96,13 @@ namespace GameFrameX.Advertisement.Runtime
             }
         }
 
+        /// <summary>
+        /// 使用配置对象初始化广告组件。
+        /// </summary>
+        /// <remarks>
+        /// Initialize the advertisement component with a configuration object.
+        /// </remarks>
+        /// <param name="config">广告配置对象 / Advertisement configuration object</param>
         [Preserve]
         public void Initialize(AdvertisementConfig config)
         {
@@ -83,6 +110,14 @@ namespace GameFrameX.Advertisement.Runtime
             _advertisementManager.Initialize(config);
         }
 
+        /// <summary>
+        /// 使用广告位ID初始化广告组件。
+        /// </summary>
+        /// <remarks>
+        /// Initialize the advertisement component with an ad unit ID.
+        /// </remarks>
+        /// <param name="adUnitId">广告位ID / Ad unit ID</param>
+        /// <param name="isDebug">是否启用调试模式 / Whether to enable debug mode</param>
         [Obsolete("Use Initialize(AdvertisementConfig) instead.")]
         [Preserve]
         public void Initialize(string adUnitId, bool isDebug = false)
@@ -93,12 +128,29 @@ namespace GameFrameX.Advertisement.Runtime
 #pragma warning restore CS0618
         }
 
+        /// <summary>
+        /// 设置广告额外数据。
+        /// </summary>
+        /// <remarks>
+        /// Set extra data for the advertisement.
+        /// </remarks>
+        /// <param name="key">数据键 / Data key</param>
+        /// <param name="value">数据值 / Data value</param>
         [Preserve]
         public void SetExtraData(string key, string value)
         {
             _advertisementManager.SetExtraData(key, value);
         }
 
+        /// <summary>
+        /// 展示广告。
+        /// </summary>
+        /// <remarks>
+        /// Show the advertisement.
+        /// </remarks>
+        /// <param name="success">展示成功回调，参数为成功信息 / Show success callback, parameter is success information</param>
+        /// <param name="fail">展示失败回调，参数为失败原因 / Show failure callback, parameter is failure reason</param>
+        /// <param name="onShowResult">展示结果回调，参数表示是否完整观看 / Show result callback, parameter indicates whether the ad was fully watched</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
         [Preserve]
         public void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult)
@@ -108,6 +160,14 @@ namespace GameFrameX.Advertisement.Runtime
 #pragma warning restore CS0618
         }
 
+        /// <summary>
+        /// 播放广告。
+        /// </summary>
+        /// <remarks>
+        /// Play the advertisement.
+        /// </remarks>
+        /// <param name="onShowResult">播放结果回调，参数表示是否成功播放 / Play result callback, parameter indicates whether the ad was played successfully</param>
+        /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
         [Preserve]
         public void Play(Action<bool> onShowResult, string customData = null)
@@ -115,12 +175,27 @@ namespace GameFrameX.Advertisement.Runtime
             _advertisementManager.Play(onShowResult, customData);
         }
 
+        /// <summary>
+        /// 使用播放选项播放广告。
+        /// </summary>
+        /// <remarks>
+        /// Play the advertisement with play options.
+        /// </remarks>
+        /// <param name="option">广告播放选项 / Advertisement play options</param>
         [Preserve]
         public void Play(AdvertisementPlayOption option)
         {
             _advertisementManager.Play(option);
         }
 
+        /// <summary>
+        /// 加载广告资源。
+        /// </summary>
+        /// <remarks>
+        /// Load the advertisement resource.
+        /// </remarks>
+        /// <param name="success">加载成功回调，参数为成功信息 / Load success callback, parameter is success information</param>
+        /// <param name="fail">加载失败回调，参数为失败原因 / Load failure callback, parameter is failure reason</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
         [Preserve]
         public void Load(Action<string> success, Action<string> fail)
