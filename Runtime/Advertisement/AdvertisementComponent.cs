@@ -168,6 +168,7 @@ namespace GameFrameX.Advertisement.Runtime
         [Preserve]
         public void SetExtraData(string key, string value)
         {
+            Debug.Log($"[AdComponent] SetExtraData: key={key}, value={value ?? "(null)"}, managerType={_advertisementManager?.GetType().FullName ?? "(null)"}");
             _advertisementManager.SetExtraData(key, value);
         }
 

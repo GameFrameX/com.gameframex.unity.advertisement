@@ -28,6 +28,8 @@
 //  ==========================================================================================
 
 using System;
+using System.Collections.Generic;
+using System.Text;
 using GameFrameX.Runtime;
 using UnityEngine.Scripting;
 
@@ -91,6 +93,11 @@ namespace GameFrameX.Advertisement.Runtime
         [Preserve] protected Action<string> OnLoadFail;
 
         /// <summary>
+        /// 扩展数据键值对，通过 SetExtraData 存储，Load 时序列化为 JSON 透传到服务端。
+        /// </summary>
+        [Preserve] protected readonly Dictionary<string, string> ExtraData = new Dictionary<string, string>();
+
+        /// <summary>
         /// 使用配置对象初始化广告管理器。
         /// </summary>
         /// <remarks>
@@ -135,7 +142,11 @@ namespace GameFrameX.Advertisement.Runtime
         [Preserve]
         public virtual void Initialize(string adUnitId, bool debug = false)
         {
-            if (_delegating) return;
+            if (_delegating)
+            {
+                return;
+            }
+
             _delegating = true;
             try
             {
@@ -159,6 +170,19 @@ namespace GameFrameX.Advertisement.Runtime
         [Preserve]
         public virtual void SetExtraData(string key, string value)
         {
+            if (string.IsNullOrEmpty(key))
+            {
+                return;
+            }
+
+            if (value == null)
+            {
+                ExtraData.Remove(key);
+            }
+            else
+            {
+                ExtraData[key] = value;
+            }
         }
 
         /// <summary>
@@ -242,9 +266,31 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Create a default configuration object from the ad unit ID and debug mode.
         /// </remarks>
-        /// <param name="adUnitId">广告单元ID / Ad unit ID</param>
-        /// <param name="debug">是否启用调试模式 / Whether to enable debug mode</param>
         /// <returns>默认广告配置对象 / Default advertisement configuration object</returns>
+        /// <summary>
+        /// 将扩展数据字典序列化为 JSON 字符串，用于透传到广告 SDK 服务端验证回调。
+        /// </summary>
+        [Preserve]
+        protected string SerializeExtraData()
+        {
+            if (ExtraData.Count == 0)
+            {
+                return null;
+            }
+
+            return Utility.Json.ToJson(ExtraData);
+        }
+
+        /// <summary>
+        /// 获取指定键的扩展数据值。
+        /// </summary>
+        [Preserve]
+        protected string GetExtraDataValue(string key)
+        {
+            ExtraData.TryGetValue(key, out var value);
+            return value;
+        }
+
         protected virtual AdvertisementConfig CreateDefaultConfig(string adUnitId, bool debug)
         {
             var config = new DefaultAdvertisementConfig();
