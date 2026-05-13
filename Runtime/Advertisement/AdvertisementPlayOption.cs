@@ -29,6 +29,7 @@
 
 using System;
 using UnityEngine.Scripting;
+using UnityEngine.Serialization;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -73,5 +74,13 @@ namespace GameFrameX.Advertisement.Runtime
         /// Extended data that is passed through to the server-side reward verification callback only during the Load phase; setting it after loading has no effect.
         /// </remarks>
         [Preserve] public string extraData;
+
+        /// <summary>
+        /// 自定义数据，用于在广告播放时透传自定义信息。
+        /// </summary>
+        /// <remarks>
+        /// Custom data passed through to the ad playback callback.
+        /// </remarks>
+        [Preserve] public string customData;
     }
 }
