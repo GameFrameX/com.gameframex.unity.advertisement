@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.4.0...1.5.0) (2026-05-13)
+
+
+### Bug Fixes
+
+* **advertisement:** 补充新增类型的防裁剪引用 ([8445df0](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/8445df0c4ec073a65b83469bd961db0a035d60bc))
+
+
+### Features
+
+* **advertisement:** 实现ExtraData扩展数据存储与序列化机制 ([d408fd8](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/d408fd86d35321432dbe26d28d4601ec2bc51768))
+* **advertisement:** 引入基于配置的广告初始化模式 ([b95c5f6](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/b95c5f64c48eca8c5c0b45c7fbab2e13a6163c50))
+* **advertisement:** 添加customData字段到AdvertisementPlayOption ([4901c97](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/4901c97af01705bfe2dfc8eaff56a6e8e8cbbb72))
+
 # [1.4.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.3.2...1.4.0) (2026-04-12)
 
 
