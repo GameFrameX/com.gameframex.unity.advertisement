@@ -48,7 +48,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked when the ad plays successfully (e.g., reward verification passed), with extended data as the parameter.
         /// </remarks>
-        [Preserve] public Action<string> onSuccess;
+        [Preserve] public Action<string> OnSuccess;
 
         /// <summary>
         /// 广告播放失败回调，参数为错误信息。
@@ -56,7 +56,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked when the ad fails to play, with error information as the parameter.
         /// </remarks>
-        [Preserve] public Action<string> onFail;
+        [Preserve] public Action<string> OnFail;
 
         /// <summary>
         /// 广告展示结果回调，参数表示是否成功展示。
@@ -64,13 +64,13 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked with the ad show result, where the parameter indicates whether the ad was successfully displayed.
         /// </remarks>
-        [Preserve] public Action<bool> onShowResult;
+        [Preserve] public Action<bool> OnShowResult;
 
         /// <summary>
-        /// 扩展数据，会透传到服务端奖励验证回调。
+        /// 扩展数据，仅在广告加载（Load）阶段透传到服务端奖励验证回调，加载后设置无效。
         /// </summary>
         /// <remarks>
-        /// Extended data that is passed through to the server-side reward verification callback.
+        /// Extended data that is passed through to the server-side reward verification callback only during the Load phase; setting it after loading has no effect.
         /// </remarks>
         [Preserve] public string extraData;
     }
