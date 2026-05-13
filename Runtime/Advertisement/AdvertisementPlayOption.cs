@@ -40,7 +40,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// </remarks>
     [Preserve]
     [Serializable]
-    public class AdvertisementPlayOption
+    public sealed class AdvertisementPlayOption
     {
         /// <summary>
         /// 广告播放成功（如奖励验证通过）回调，参数为扩展数据。
