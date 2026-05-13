@@ -95,6 +95,9 @@ namespace GameFrameX.Advertisement.Runtime
         /// <summary>
         /// 扩展数据键值对，通过 SetExtraData 存储，Load 时序列化为 JSON 透传到服务端。
         /// </summary>
+        /// <remarks>
+        /// Extended data key-value pairs stored via SetExtraData, serialized to JSON at Load time for server-side pass-through.
+        /// </remarks>
         [Preserve] protected readonly Dictionary<string, string> ExtraData = new Dictionary<string, string>();
 
         /// <summary>
@@ -261,15 +264,12 @@ namespace GameFrameX.Advertisement.Runtime
         }
 
         /// <summary>
-        /// 根据广告单元ID和调试模式创建默认配置对象。
-        /// </summary>
-        /// <remarks>
-        /// Create a default configuration object from the ad unit ID and debug mode.
-        /// </remarks>
-        /// <returns>默认广告配置对象 / Default advertisement configuration object</returns>
-        /// <summary>
         /// 将扩展数据字典序列化为 JSON 字符串，用于透传到广告 SDK 服务端验证回调。
         /// </summary>
+        /// <remarks>
+        /// Serializes the extended data dictionary to a JSON string for pass-through to the ad SDK server-side verification callback.
+        /// </remarks>
+        /// <returns>序列化后的 JSON 字符串；如果无扩展数据则返回 null / Serialized JSON string; null if no extended data</returns>
         [Preserve]
         protected string SerializeExtraData()
         {
@@ -284,6 +284,11 @@ namespace GameFrameX.Advertisement.Runtime
         /// <summary>
         /// 获取指定键的扩展数据值。
         /// </summary>
+        /// <remarks>
+        /// Gets the extended data value for the specified key.
+        /// </remarks>
+        /// <param name="key">数据键 / Data key</param>
+        /// <returns>指定键对应的值；如果键不存在则返回 null / Value for the specified key; null if the key does not exist</returns>
         [Preserve]
         protected string GetExtraDataValue(string key)
         {
@@ -291,6 +296,15 @@ namespace GameFrameX.Advertisement.Runtime
             return value;
         }
 
+        /// <summary>
+        /// 根据广告单元ID和调试模式创建默认配置对象。
+        /// </summary>
+        /// <remarks>
+        /// Creates a default configuration object from the ad unit ID and debug mode.
+        /// </remarks>
+        /// <param name="adUnitId">广告单元ID / Ad unit ID</param>
+        /// <param name="debug">是否启用调试模式 / Whether to enable debug mode</param>
+        /// <returns>默认广告配置对象 / Default advertisement configuration object</returns>
         protected virtual AdvertisementConfig CreateDefaultConfig(string adUnitId, bool debug)
         {
             var config = new DefaultAdvertisementConfig();
@@ -299,9 +313,21 @@ namespace GameFrameX.Advertisement.Runtime
             return config;
         }
 
+        /// <summary>
+        /// 默认广告配置，内部用于兼容旧版字符串初始化 API。
+        /// </summary>
+        /// <remarks>
+        /// Default advertisement configuration, used internally for backward compatibility with legacy string-based initialization API.
+        /// </remarks>
         [Serializable]
         private class DefaultAdvertisementConfig : AdvertisementConfig
         {
+            /// <summary>
+            /// 广告单元ID。
+            /// </summary>
+            /// <remarks>
+            /// Ad unit ID.
+            /// </remarks>
             public string adUnitId;
         }
     }
