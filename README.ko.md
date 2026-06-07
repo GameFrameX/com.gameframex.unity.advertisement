@@ -54,27 +54,34 @@ GameFrameX Advertisement는 GameFrameX 프레임워크의 광고 컴포넌트로
 
 ### 설치
 
-#### 방법 1: Unity Package Manager (권장)
+Unity 프로젝트의 `Packages/manifest.json`을 편집하여 `scopedRegistries` 섹션을 추가하세요:
 
-1. Unity 에디터를 열고 `Window` -> `Package Manager`로 이동
-2. `+` 버튼을 클릭하고 `Add package from git URL...`을 선택
-3. 다음 URL을 입력: `https://github.com/GameFrameX/com.gameframex.unity.advertisement.git` 그리고 `Add` 클릭
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-### 설정
+`scopes`는 이 레지스트리를 통해 어떤 패키지를 해석할지 제어합니다. `com.gameframex`로 시작하는 패키지만 이 레지스트리에서 가져옵니다.
 
-#### 1. 컴포넌트 추가
+Then add the package to `dependencies`:
 
-씬의 GameObject에 `AdvertisementComponent` 스크립트를 추가합니다.
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.advertisement": "1.5.0"
+  }
+}
+```
 
-#### 2. 광고 유닛 ID 설정
-
-Unity 인스펙터 창에서 `Advertisement Component`를 찾아 광고 유닛 ID(`Ad Unit Id`)를 설정합니다.
-
-#### 3. 광고 매니저 구현
-
-이 컴포넌트는 광고 표시를 위한 추상 레이어와 핵심 로직을 제공합니다. 특정 광고 SDK(AdMob, Unity Ads, IronSource 등)와 상호작용하는 구체적인 `IAdvertisementManager` 인터페이스 구현이 필요합니다.
-
----
 
 ## 사용 예시
 

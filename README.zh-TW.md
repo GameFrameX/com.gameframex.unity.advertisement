@@ -52,29 +52,36 @@ GameFrameX Advertisement 是一個 GameFrameX 框架的廣告組件，用於在 
 
 ## 快速開始
 
-### 安裝方式
+### 安裝
 
-#### 方式一：Unity Package Manager（推薦）
+編輯 Unity 專案的 `Packages/manifest.json`，添加 `scopedRegistries` 部分：
 
-1. 打開 Unity 編輯器，選擇 `Window` -> `Package Manager`
-2. 點擊 `+` 按鈕，選擇 `Add package from git URL...`
-3. 輸入以下 URL：`https://github.com/GameFrameX/com.gameframex.unity.advertisement.git` 並點擊 `Add`
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "GameFrameX",
+      "url": "https://gameframex.upm.alianblank.uk",
+      "scopes": [
+        "com.gameframex"
+      ]
+    }
+  ]
+}
+```
 
-### 配置
+`scopes` 控制哪些套件透過此註冊表解析。只有以 `com.gameframex` 開頭的套件才會從這個註冊表取得。
 
-#### 1. 添加組件
+Then add the package to `dependencies`:
 
-將 `AdvertisementComponent` 腳本添加到場景中的任意 GameObject 上。
+```json
+{
+  "dependencies": {
+    "com.gameframex.unity.advertisement": "1.5.0"
+  }
+}
+```
 
-#### 2. 配置廣告單元 ID
-
-在 Unity 編輯器的 Inspector 視窗中，找到 `Advertisement Component`，設置廣告單元 ID（`Ad Unit Id`）。
-
-#### 3. 實現廣告管理器
-
-本組件提供廣告顯示的抽象層和核心邏輯。您需要項目中包含一個具體的 `IAdvertisementManager` 介面實現，該實現負責與特定的廣告 SDK（例如 AdMob、Unity Ads、IronSource 等）進行交互。
-
----
 
 ## 使用範例
 
