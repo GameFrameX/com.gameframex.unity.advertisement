@@ -21,7 +21,7 @@
 
 </div>
 
-## 📑 目次
+## 目次
 
 - [プロジェクト概要](#プロジェクト概要)
 - [クイックスタート](#クイックスタート)
@@ -38,11 +38,11 @@ GameFrameX Advertisementは、GameFrameXフレームワークの広告コンポ�
 
 ### 主な機能
 
-- 🎯 **簡単統合** - 最小限の設定で広告サポートを追加
-- 🔧 **コンポーネントベース設計** - GameFrameXモジュラーアーキテクチャ基盤
-- 📊 **複数広告ネットワーク** - 抽象インターフェースで各種広告SDK（AdMob、Unity Ads、IronSourceなど）をサポート
-- 🎮 **リワード広告** - インセンティブ広告の報酬コールバック処理内蔵
-- 🛠️ **エディタ統合** - カスタムインスペクタで簡単設定
+- **簡単統合** - 最小限の設定で広告サポートを追加
+- **コンポーネントベース設計** - GameFrameXモジュラーアーキテクチャ基盤
+- **複数広告ネットワーク** - 抽象インターフェースで各種広告SDK（AdMob、Unity Ads、IronSourceなど）をサポート
+- **リワード広告** - インセンティブ広告の報酬コールバック処理内蔵
+- **エディタ統合** - カスタムインスペクタで簡単設定
 
 ### システム要件
 
@@ -148,15 +148,15 @@ public class MyAdCaller : MonoBehaviour
 
 ## ドキュメントとリソース
 
-- 📖 **ドキュメント**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🐛 **イシュートラッカー**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
+- **ドキュメント**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- **イシュートラッカー**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
 
 ---
 
 ## コミュニティとサポート
 
-- 💬 **QQグループ**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 💡 **機能リクエスト**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
+- **QQグループ**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- **機能リクエスト**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
 
 ---
 

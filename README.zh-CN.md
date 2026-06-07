@@ -21,7 +21,7 @@
 
 </div>
 
-## 📑 目录导航
+## 目录导航
 
 - [项目简介](#项目简介)
 - [快速开始](#快速开始)
@@ -38,11 +38,11 @@ GameFrameX Advertisement 是一个 GameFrameX 框架的广告组件，用于在 
 
 ### 核心特性
 
-- 🎯 **简单集成** - 最少配置即可添加广告支持
-- 🔧 **组件化设计** - 基于 GameFrameX 模块化架构
-- 📊 **多广告网络** - 抽象接口支持多种广告 SDK（AdMob、Unity Ads、IronSource 等）
-- 🎮 **激励广告** - 内置激励视频广告的奖励回调处理
-- 🛠️ **编辑器集成** - 自定义 Inspector 方便配置
+- **简单集成** - 最少配置即可添加广告支持
+- **组件化设计** - 基于 GameFrameX 模块化架构
+- **多广告网络** - 抽象接口支持多种广告 SDK（AdMob、Unity Ads、IronSource 等）
+- **激励广告** - 内置激励视频广告的奖励回调处理
+- **编辑器集成** - 自定义 Inspector 方便配置
 
 ### 系统要求
 
@@ -148,15 +148,15 @@ public class MyAdCaller : MonoBehaviour
 
 ## 文档与资源
 
-- 📖 **完整文档**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🐛 **问题反馈**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
+- **完整文档**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- **问题反馈**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
 
 ---
 
 ## 社区与支持
 
-- 💬 **QQ 讨论群**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 💡 **功能建议**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
+- **QQ 讨论群**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- **功能建议**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
 
 ---
 

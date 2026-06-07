@@ -21,7 +21,7 @@ All-in-One Solution for Indie Game Development · Empowering Indie Developers' D
 
 </div>
 
-## 📑 Table of Contents
+## Table of Contents
 
 - [Project Overview](#project-overview)
 - [Quick Start](#quick-start)
@@ -38,11 +38,11 @@ GameFrameX Advertisement is an advertisement component for the GameFrameX framew
 
 ### Key Features
 
-- 🎯 **Easy Integration** - Add advertisement support with minimal setup
-- 🔧 **Component-Based Design** - Built on GameFrameX modular architecture
-- 📊 **Multiple Ad Networks** - Abstract interface supports various ad SDKs (AdMob, Unity Ads, IronSource, etc.)
-- 🎮 **Reward Ads** - Built-in reward callback handling for incentivized ads
-- 🛠️ **Editor Integration** - Custom Inspector for easy configuration
+- **Easy Integration** - Add advertisement support with minimal setup
+- **Component-Based Design** - Built on GameFrameX modular architecture
+- **Multiple Ad Networks** - Abstract interface supports various ad SDKs (AdMob, Unity Ads, IronSource, etc.)
+- **Reward Ads** - Built-in reward callback handling for incentivized ads
+- **Editor Integration** - Custom Inspector for easy configuration
 
 ### System Requirements
 
@@ -148,15 +148,15 @@ public class MyAdCaller : MonoBehaviour
 
 ## Documentation & Resources
 
-- 📖 **Documentation**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
+- **Documentation**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- **Issue Tracker**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
 
 ---
 
 ## Community & Support
 
-- 💬 **QQ Group**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 💡 **Feature Requests**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
+- **QQ Group**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- **Feature Requests**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
 
 ---
 

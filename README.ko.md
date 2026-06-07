@@ -21,7 +21,7 @@
 
 </div>
 
-## 📑 목차
+## 목차
 
 - [프로젝트 개요](#프로젝트-개요)
 - [빠른 시작](#빠른-시작)
@@ -38,11 +38,11 @@ GameFrameX Advertisement는 GameFrameX 프레임워크의 광고 컴포넌트로
 
 ### 주요 기능
 
-- 🎯 **간편한 통합** - 최소 설정으로 광고 지원 추가
-- 🔧 **컴포넌트 기반 설계** - GameFrameX 모듈식 아키텍처 기반
-- 📊 **다중 광고 네트워크** - 추상 인터페이스로 다양한 광고 SDK(AdMob, Unity Ads, IronSource 등) 지원
-- 🎮 **보상형 광고** - 인센티브 광고의 보상 콜백 처리 내장
-- 🛠️ **에디터 통합** - 커스텀 인스펙터로 간편 설정
+- **간편한 통합** - 최소 설정으로 광고 지원 추가
+- **컴포넌트 기반 설계** - GameFrameX 모듈식 아키텍처 기반
+- **다중 광고 네트워크** - 추상 인터페이스로 다양한 광고 SDK(AdMob, Unity Ads, IronSource 등) 지원
+- **보상형 광고** - 인센티브 광고의 보상 콜백 처리 내장
+- **에디터 통합** - 커스텀 인스펙터로 간편 설정
 
 ### 시스템 요구사항
 
@@ -148,15 +148,15 @@ public class MyAdCaller : MonoBehaviour
 
 ## 문서 및 자료
 
-- 📖 **전체 문서**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
-- 🐛 **이슈 트래커**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
+- **전체 문서**: [https://gameframex.doc.alianblank.com](https://gameframex.doc.alianblank.com)
+- **이슈 트래커**: [GitHub Issues](https://github.com/GameFrameX/com.gameframex.unity.advertisement/issues)
 
 ---
 
 ## 커뮤니티 및 지원
 
-- 💬 **QQ 그룹**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
-- 💡 **기능 요청**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
+- **QQ 그룹**: [467608841](https://qm.qq.com/cgi-bin/qm/qr?k=sYFd1nv6m2KZIWFLorZ5pBR0AE5ZhbuL&jump_from=webapi&authKey=oCu+uoL3n35fT5SEt7iLgGtROPxh31n/rHUxRlp0w1f+j38W4tKBuWyRH3KEdwHN)
+- **기능 요청**: [GitHub Discussions](https://github.com/GameFrameX/com.gameframex.unity.advertisement/discussions)
 
 ---
 
