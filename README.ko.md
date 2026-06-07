@@ -82,7 +82,6 @@ Then add the package to `dependencies`:
 }
 ```
 
-
 ## 사용 예시
 
 ### 기본 사용법
@@ -163,14 +162,4 @@ public class MyAdCaller : MonoBehaviour
 
 ## 라이선스
 
-이 프로젝트는 **MIT 라이선스** 및 **Apache 라이선스 2.0** 이중 라이선스로 배포됩니다.
-
-전체 라이선스 텍스트 보기: [LICENSE.md](LICENSE.md)
-
----
-
-<div align="center">
-
-**이 프로젝트가 도움이 되셨다면, ⭐ 별을 주세요!**
-
-</div>
+자세한 내용은 [LICENSE.md](LICENSE.md) 파일을 참조하세요.
