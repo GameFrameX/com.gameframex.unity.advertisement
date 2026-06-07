@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.5.0...1.5.1) (2026-06-07)
+
+
+### Bug Fixes
+
+* 补全包规范文件（LICENSE/CHANGELOG/URL 字段/unity 字段） ([7515810](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/7515810eb09bbb53588cda36f18bf79b6046bf6a))
+
 # [1.5.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.4.0...1.5.0) (2026-05-13)
 
 
