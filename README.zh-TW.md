@@ -160,6 +160,17 @@ public class MyAdCaller : MonoBehaviour
 
 ---
 
+
+## 依賴
+
+| 套件 | 說明 |
+|------|------|
+| (无) | - |
+
+
+## 更新日誌
+
+查看 [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.advertisement/releases) 了解更新日誌。
 ## 開源協議
 
 詳見 [LICENSE.md](LICENSE.md) 檔案。

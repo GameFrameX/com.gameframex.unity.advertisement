@@ -160,6 +160,17 @@ public class MyAdCaller : MonoBehaviour
 
 ---
 
+
+## Dependencies
+
+| Package | Description |
+|---------|-------------|
+| (无) | - |
+
+
+## Changelog
+
+See [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.advertisement/releases) for changelog.
 ## License
 
 See [LICENSE.md](LICENSE.md) for license information.
