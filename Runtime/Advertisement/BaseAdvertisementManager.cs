@@ -42,31 +42,9 @@ namespace GameFrameX.Advertisement.Runtime
     /// Abstract base class for advertisement managers, providing bidirectional delegation between legacy and new APIs and common callback management.
     /// </remarks>
     [Preserve]
-    public abstract class BaseAdvertisementManager : GameFrameworkModule, IAdvertisementManager
+    public abstract class BaseAdvertisementManager : IGameFrameworkModule, IAdvertisementManager
     {
         private bool _delegating;
-
-        /// <summary>
-        /// 更新方法，每帧由框架调用。
-        /// </summary>
-        /// <remarks>
-        /// Update method called by the framework every frame.
-        /// </remarks>
-        /// <param name="elapseSeconds">逻辑流逝时间（秒） / Elapsed logic time in seconds</param>
-        /// <param name="realElapseSeconds">真实流逝时间（秒） / Elapsed real time in seconds</param>
-        protected override void Update(float elapseSeconds, float realElapseSeconds)
-        {
-        }
-
-        /// <summary>
-        /// 关闭时的清理方法。
-        /// </summary>
-        /// <remarks>
-        /// Cleanup method invoked on shutdown.
-        /// </remarks>
-        protected override void Shutdown()
-        {
-        }
 
         /// <summary>
         /// 广告展示结果回调。
@@ -105,6 +83,8 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <remarks>
         /// Initialize the advertisement manager with a configuration object.
+        /// 基类仅做非空校验：强类型配置由渠道子类 override 消费（各渠道 Bootstrap 的工厂闭包注入对应
+        /// <see cref="AdvertisementConfig"/> 子类），基类不再把配置对象吞并为字符串初始化路径。
         /// </remarks>
         /// <param name="config">广告配置对象 / Advertisement configuration object</param>
         /// <exception cref="ArgumentNullException">当 <paramref name="config"/> 为 null 时抛出 / Thrown when <paramref name="config"/> is null</exception>
@@ -114,22 +94,6 @@ namespace GameFrameX.Advertisement.Runtime
             if (config == null)
             {
                 throw new ArgumentNullException(nameof(config));
-            }
-
-            if (_delegating)
-            {
-                return;
-            }
-
-            _delegating = true;
-            try
-            {
-                var defaultConfig = config as DefaultAdvertisementConfig;
-                Initialize(defaultConfig != null ? defaultConfig.adUnitId : string.Empty, config.isDebug);
-            }
-            finally
-            {
-                _delegating = false;
             }
         }
 
