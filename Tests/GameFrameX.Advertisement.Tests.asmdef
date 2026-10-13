@@ -1,0 +1,19 @@
+{
+    "name": "GameFrameX.Advertisement.Tests",
+    "references": [
+        "GameFrameX.Advertisement.Runtime",
+        "GameFrameX.Runtime"
+    ],
+    "rootNamespace": "GameFrameX.Advertisement.Tests",
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
