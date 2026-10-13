@@ -44,18 +44,6 @@ namespace GameFrameX.Advertisement.Runtime
     [AddComponentMenu("GameFrameX/Advertisement")]
     public class AdvertisementComponent : GameFrameworkComponent
     {
-        [SerializeField] private string m_adUnitIdAndroid = string.Empty;
-
-        [SerializeField] private string m_adUnitIdiOS = string.Empty;
-
-        [SerializeField] private string m_adUnitIdWebGL = string.Empty;
-
-        [SerializeField] private string m_adUnitIdWebGLWeChat = string.Empty;
-
-        [SerializeField] private string m_adUnitIdWebGLDouYin = string.Empty;
-
-        [SerializeField] private string m_adUnitIdWebGLKuaiShou = string.Empty;
-
         [SerializeField] private bool m_debug = false;
 
         [SerializeReference, SerializeField] private AdvertisementConfig m_config = null;
@@ -65,6 +53,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <remarks>
         /// Gets the ad unit ID for the current platform.
+        /// 仅在使用旧版字符串初始化 API 时被赋值；常规渠道配置已下沉到各渠道 Bootstrap 的强类型 AdvertisementConfig。
         /// </remarks>
         /// <value>广告位ID / Ad unit ID</value>
         public string AdUnitId { get; private set; }
@@ -84,9 +73,14 @@ namespace GameFrameX.Advertisement.Runtime
 
         private IAdvertisementManager _advertisementManager;
 
+        /// <summary>
+        /// 渠道发现与解析：模块槽位注册为主包默认实现 <see cref="AdvertisementManager"/>（渠道实现不再各自直接占用模块槽位），
+        /// 实际的渠道管理器由 <see cref="AdvertisementRegistry"/> 在调用期互斥解析（注册顺序即优先级，宏墙保证小游戏渠道天然互斥），
+        /// 不再依赖 Inspector 序列化的实现类型全名字符串反射发现。
+        /// </summary>
         protected override void Awake()
         {
-            ImplementationComponentType = Utility.Assembly.GetType(componentType);
+            ImplementationComponentType = typeof(AdvertisementManager);
             InterfaceComponentType = typeof(IAdvertisementManager);
             base.Awake();
             _advertisementManager = GameFrameworkEntry.GetModule<IAdvertisementManager>();
@@ -95,26 +89,6 @@ namespace GameFrameX.Advertisement.Runtime
                 Log.Fatal("Advertisement manager is invalid.");
                 return;
             }
-
-            AdUnitId =
-#if UNITY_WEBGL
-#if ENABLE_WECHAT_MINI_GAME
-        m_adUnitIdWebGLWeChat
-#elif ENABLE_DOUYIN_MINI_GAME
-                m_adUnitIdWebGLDouYin
-#elif ENABLE_KUAISHOU_MINI_GAME
-                m_adUnitIdWebGLKuaiShou
-#else
-                m_adUnitIdWebGL
-#endif
-#elif UNITY_ANDROID
-                m_adUnitIdAndroid
-#elif UNITY_IOS
-                m_adUnitIdiOS
-#else
-                string.Empty
-#endif
-                ;
         }
 
         private void Start()
