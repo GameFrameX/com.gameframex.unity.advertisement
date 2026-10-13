@@ -40,9 +40,9 @@ GameFrameX Advertisement is an advertisement component for the GameFrameX framew
 
 - **Easy Integration** - Add advertisement support with minimal setup
 - **Component-Based Design** - Built on GameFrameX modular architecture
-- **Multiple Ad Networks** - Abstract interface supports various ad SDKs (AdMob, Unity Ads, IronSource, etc.)
+- **Multiple Ad Networks** - Abstract interface supports various ad SDKs (csj, TopOn, WeChat/Douyin/Kuaishou/Alipay Mini Games, etc.)
 - **Reward Ads** - Built-in reward callback handling for incentivized ads
-- **Editor Integration** - Custom Inspector for easy configuration
+- **Channel Registry** - Channel package Bootstraps self-register; mutually exclusive resolution + explicit channel id override, with zero type-name string reflection
 
 ### System Requirements
 
@@ -140,11 +140,46 @@ public class MyAdCaller : MonoBehaviour
 }
 ```
 
+### Channel Discovery and Configuration (Bootstrap Self-Registration)
+
+The discovery layer is registry-based: each channel package registers its channel factory into `AdvertisementRegistry` via its own `XxxAdvertisementBootstrap` (`RuntimeInitializeOnLoadMethod(BeforeSceneLoad)`); uninstalled channel packages are stripped, so no registration happens (referencing means registering).
+
+- **Mutually exclusive resolution**: `AdvertisementRegistry.ResolveManager()` without arguments picks the first channel in registration order (mini-game channels are naturally mutually exclusive via platform macros);
+- **Explicit routing override**: `AdvertisementRegistry.ResolveManager("csj")` explicitly selects a channel, for manual selection when csj / TopOn are both installed;
+- **Strongly typed configuration**: channel configuration (appId / adUnitId, etc.) is assigned at startup on each channel Bootstrap's `Config` static property; the factory closure instantiates the channel on first resolution and injects a strongly typed `AdvertisementConfig` subclass;
+- **Module wiring**: `AdvertisementComponent`'s module slot is occupied by the main package's default implementation `AdvertisementManager` (channel implementations no longer occupy module slots themselves); all calls and framework shutdown (`IShutdownableModule`) are forwarded to the registry's resolved result.
+
+```csharp
+using GameFrameX.Advertisement.Runtime;
+using GameFrameX.Advertisement.CSJ.Runtime; // Take the CSJ channel as an example
+
+// Inject channel configuration at startup (before the first ad call)
+CSJAdvertisementBootstrap.Config = new CSJAdvertisementConfig
+{
+    appId = "Your CSJ AppId",
+    adUnitId = "Your ad unit ID",
+    isDebug = false,
+};
+
+// Then use AdvertisementComponent as usual; or explicitly route to a channel
+var manager = AdvertisementRegistry.ResolveManager("csj");
+```
+
+### Breaking Changes and Migration (v2.1)
+
+- **Inspector type dropdown removed**: `AdvertisementComponent` no longer provides an implementation type dropdown (the original `componentType` type-name string reflection discovery path has been deleted); the discovery layer now converges on `AdvertisementRegistry`;
+- **Macro-selected ad unit ID fields removed**: the six serialized fields `Android/iOS/WebGL/WeChat/Douyin/Kuaishou ad unit ID` on the component have been deleted; the ad unit ID has moved into each channel Bootstrap's strongly typed configuration (e.g. `CSJAdvertisementBootstrap.Config.adUnitId`), please move these values into the corresponding channel package's startup configuration;
+- **TopOn app configuration moved out of the scene**: the appId / appKey serialized fields on `TopOnAdvertisementBridgeLink` have been deleted and migrated to `TopOnAdvertisementBootstrap.Config` (the BridgeLink only keeps its bridge callback responsibilities); existing projects need to migrate the configuration manually;
+- **`AdvertisementConfigAttribute` deleted**: the reflection association between Manager and configuration types (for Inspector reflection drawing) has been removed along with the Inspector reflection chain; registration entries directly carry the factory and configuration.
+
 ### Main Classes and Interfaces
 
-- **`AdvertisementComponent`**: Unity MonoBehaviour component, the main entry point for interacting with the ad system.
+- **`AdvertisementComponent`**: Unity MonoBehaviour component, the main entry point for interacting with the ad system (public API and call behavior unchanged).
 - **`IAdvertisementManager`**: Core interface for ad managers. All specific ad network implementations must implement this interface.
 - **`BaseAdvertisementManager`**: An optional abstract base class implementing `IAdvertisementManager`, providing common callback handling logic.
+- **`AdvertisementRegistry`**: Ad channel registry; `Register` / `Unregister` / `Contains` / `GetManager` / `GetAllManagers` / `ResolveManager(channelId = null)` (mutually exclusive resolution + explicit routing override).
+- **`AdvertisementChannelRegistration`**: Channel registration descriptor (channel id + display name + `Func<IAdvertisementManager>` factory, with strongly typed configuration injected inside the closure).
+- **`AdvertisementManager`**: Main package default implementation; occupies the `IAdvertisementManager` module slot and forwards calls to the registry's resolved result (including `IShutdownableModule` shutdown forwarding).
 
 ---
 

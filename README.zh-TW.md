@@ -40,9 +40,9 @@ GameFrameX Advertisement 是一個 GameFrameX 框架的廣告組件，用於在 
 
 - **簡單集成** - 最少配置即可添加廣告支持
 - **組件化設計** - 基於 GameFrameX 模組化架構
-- **多廣告網絡** - 抽象介面支持多種廣告 SDK（AdMob、Unity Ads、IronSource 等）
+- **多廣告網絡** - 抽象介面支持多種廣告 SDK（csj、TopOn、微信/抖音/快手/支付寶小遊戲等）
 - **激勵廣告** - 內置激勵視頻廣告的獎勵回調處理
-- **編輯器集成** - 自定義 Inspector 方便配置
+- **渠道註冊表** - 渠道包 Bootstrap 自註冊，互斥解析 + 顯式渠道標識覆蓋，零類型名字串反射
 
 ### 系統需求
 
@@ -140,11 +140,46 @@ public class MyAdCaller : MonoBehaviour
 }
 ```
 
+### 渠道發現與配置（Bootstrap 自註冊）
+
+渠道發現層基於註冊表：各渠道包通過自身的 `XxxAdvertisementBootstrap`（`RuntimeInitializeOnLoadMethod(BeforeSceneLoad)`）把渠道工廠註冊進 `AdvertisementRegistry`；未安裝的渠道包代碼被裁剪，註冊不會發生（引用即註冊）。
+
+- **互斥解析**：`AdvertisementRegistry.ResolveManager()` 不帶參數時按註冊順序取首個渠道（小遊戲渠道由平台宏保證天然互斥）；
+- **顯式路由覆蓋**：`AdvertisementRegistry.ResolveManager("csj")` 顯式指定渠道，用於 csj / TopOn 同裝時的人工選型；
+- **強型別配置**：渠道配置（appId / adUnitId 等）在各渠道 Bootstrap 的 `Config` 靜態屬性上於啟動期賦值，工廠閉包在首次解析時實例化渠道並注入強型別 `AdvertisementConfig` 子類；
+- **模組接線**：`AdvertisementComponent` 的模組槽位由主包默認實現 `AdvertisementManager` 佔據（渠道實現不再各自佔用模組槽位），所有調用與框架關閉（`IShutdownableModule`）都轉發給註冊表解析結果。
+
+```csharp
+using GameFrameX.Advertisement.Runtime;
+using GameFrameX.Advertisement.CSJ.Runtime; // 以穿山甲渠道為例
+
+// 啟動期（首次廣告調用前）注入渠道配置
+CSJAdvertisementBootstrap.Config = new CSJAdvertisementConfig
+{
+    appId = "你的穿山甲 AppId",
+    adUnitId = "你的廣告位ID",
+    isDebug = false,
+};
+
+// 之後照常使用 AdvertisementComponent；或顯式路由到指定渠道
+var manager = AdvertisementRegistry.ResolveManager("csj");
+```
+
+### 破壞性變更與遷移（v2.1）
+
+- **移除 Inspector 類型下拉**：`AdvertisementComponent` 不再提供實現類型選擇下拉（原 `componentType` 類型名字串反射發現路徑已刪除），發現層統一收斂到 `AdvertisementRegistry`；
+- **移除宏選廣告位ID欄位**：組件上的 `Android/iOS/WebGL/微信/抖音/快手 廣告位ID` 六個序列化欄位已刪除，廣告位ID 下沉到各渠道 Bootstrap 的強型別配置（如 `CSJAdvertisementBootstrap.Config.adUnitId`），請把這些值搬到對應渠道包的啟動期配置；
+- **TopOn 應用配置遷出場景**：`TopOnAdvertisementBridgeLink` 上的 appId / appKey 序列化欄位已刪除，遷移到 `TopOnAdvertisementBootstrap.Config`（BridgeLink 僅保留橋接回調職責），既有工程需手動搬移配置；
+- **`AdvertisementConfigAttribute` 已刪除**：Manager 與配置類型的反射關聯（供 Inspector 反射繪製）隨 Inspector 反射鏈一併移除，註冊項直接攜帶工廠與配置。
+
 ### 主要類和介面
 
-- **`AdvertisementComponent`**: Unity MonoBehaviour 組件，是與廣告系統交互的主要入口。
+- **`AdvertisementComponent`**: Unity MonoBehaviour 組件，是與廣告系統交互的主要入口（公開 API 與調用行為不變）。
 - **`IAdvertisementManager`**: 廣告管理器的核心介面。所有具體的廣告網絡實現都必須實現此介面。
 - **`BaseAdvertisementManager`**: 一個可選的抽象基類，實現了 `IAdvertisementManager` 介面，提供了通用的回調處理邏輯。
+- **`AdvertisementRegistry`**: 廣告渠道註冊表；`Register` / `Unregister` / `Contains` / `GetManager` / `GetAllManagers` / `ResolveManager(channelId = null)`（互斥解析 + 顯式路由覆蓋）。
+- **`AdvertisementChannelRegistration`**: 渠道註冊描述（渠道 id + 展示名 + `Func<IAdvertisementManager>` 工廠，閉包內注入強型別配置）。
+- **`AdvertisementManager`**: 主包默認實現，佔據 `IAdvertisementManager` 模組槽位並把調用轉發給註冊表解析結果（含 `IShutdownableModule` 關閉轉發）。
 
 ---
 
