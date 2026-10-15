@@ -1,3 +1,28 @@
+# [2.0.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.5.1...2.0.0) (2026-10-15)
+
+
+### Build System
+
+* **package:** 升级包版本与依赖 ([3c2c7b3](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/3c2c7b3284061e401a83fa8404226f67b7f4de97))
+
+
+### Features
+
+* **advertisement:** 适配 GameFrameX 3.0.0 ([c0b695a](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/c0b695a6b17994672c5af8ac0f04812b130c4e49))
+* **component:** 组件配置收敛到注册表 ([4eb7125](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/4eb7125bedf3942ca6dc519490012408cb79f293))
+* **module:** 模块契约迁移至接口 ([2a19415](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/2a19415d69842b2ec972ab4e947f9ab3b1d7c77a))
+* **registry:** 引入广告渠道注册表 ([737af57](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/737af57c2c6b31140d62fc4ae4f22ee97d301997))
+
+
+### BREAKING CHANGES
+
+* **package:** 模块契约由 GameFrameworkModule 抽象基类迁移至
+IGameFrameworkModule 标记接口（BaseAdvertisementManager 同步迁移，
+删除空 Update / Shutdown 覆写）；引入 AdvertisementRegistry 取代
+Inspector 反射链（删除 AdvertisementConfigAttribute 与 Editor 自定义
+Inspector），广告位 ID 与渠道应用配置下沉到各渠道 Bootstrap 的
+强类型 AdvertisementConfig 配置。
+
 # [2.0.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.5.1...2.0.0) (2026-10-08)
 
 
