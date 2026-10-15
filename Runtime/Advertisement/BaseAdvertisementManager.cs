@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -41,7 +40,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// <remarks>
     /// Abstract base class for advertisement managers, providing bidirectional delegation between legacy and new APIs and common callback management.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public abstract class BaseAdvertisementManager : IGameFrameworkModule, IAdvertisementManager
     {
         private bool _delegating;
@@ -52,7 +51,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback for advertisement show result.
         /// </remarks>
-        [Preserve] protected Action<bool> OnShowResult;
+        [UnityEngine.Scripting.Preserve] protected Action<bool> OnShowResult;
 
         /// <summary>
         /// 广告加载成功回调。
@@ -60,7 +59,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback for advertisement load success.
         /// </remarks>
-        [Preserve] protected Action<string> OnLoadSuccess;
+        [UnityEngine.Scripting.Preserve] protected Action<string> OnLoadSuccess;
 
         /// <summary>
         /// 广告加载失败回调。
@@ -68,7 +67,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback for advertisement load failure.
         /// </remarks>
-        [Preserve] protected Action<string> OnLoadFail;
+        [UnityEngine.Scripting.Preserve] protected Action<string> OnLoadFail;
 
         /// <summary>
         /// 扩展数据键值对，通过 SetExtraData 存储，Load 时序列化为 JSON 透传到服务端。
@@ -76,7 +75,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Extended data key-value pairs stored via SetExtraData, serialized to JSON at Load time for server-side pass-through.
         /// </remarks>
-        [Preserve] protected readonly Dictionary<string, string> ExtraData = new Dictionary<string, string>();
+        [UnityEngine.Scripting.Preserve] protected readonly Dictionary<string, string> ExtraData = new Dictionary<string, string>();
 
         /// <summary>
         /// 使用配置对象初始化广告管理器。
@@ -88,7 +87,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </remarks>
         /// <param name="config">广告配置对象 / Advertisement configuration object</param>
         /// <exception cref="ArgumentNullException">当 <paramref name="config"/> 为 null 时抛出 / Thrown when <paramref name="config"/> is null</exception>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual void Initialize(AdvertisementConfig config)
         {
             if (config == null)
@@ -106,7 +105,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="adUnitId">广告单元ID / Ad unit ID</param>
         /// <param name="debug">是否启用调试模式 / Whether to enable debug mode</param>
         [Obsolete("Use Initialize(AdvertisementConfig) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual void Initialize(string adUnitId, bool debug = false)
         {
             if (_delegating)
@@ -134,7 +133,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </remarks>
         /// <param name="key">数据键 / Data key</param>
         /// <param name="value">数据值 / Data value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public virtual void SetExtraData(string key, string value)
         {
             if (string.IsNullOrEmpty(key))
@@ -161,7 +160,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="playResult">播放结果回调，参数表示是否成功播放 / Play result callback, parameter indicates whether the ad was played successfully</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Play(Action<bool> playResult, string customData = null);
 
         /// <summary>
@@ -171,7 +170,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Play the advertisement with play options.
         /// </remarks>
         /// <param name="option">广告播放选项 / Advertisement play options</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Play(AdvertisementPlayOption option);
 
         /// <summary>
@@ -185,7 +184,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="onShowResult">展示结果回调，参数表示是否完整观看 / Show result callback, parameter indicates whether the ad was fully watched</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null);
 
         /// <summary>
@@ -198,7 +197,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="fail">加载失败回调，参数为失败原因 / Load failure callback, parameter is failure reason</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public abstract void Load(Action<string> success, Action<string> fail, string customData = null);
 
         /// <summary>
@@ -208,7 +207,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Trigger the ad load success callback.
         /// </remarks>
         /// <param name="json">成功信息（JSON格式） / Success information in JSON format</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void LoadSuccess(string json)
         {
             OnLoadSuccess?.Invoke(json);
@@ -221,7 +220,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Trigger the ad load failure callback.
         /// </remarks>
         /// <param name="json">失败信息（JSON格式） / Failure information in JSON format</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected void LoadFail(string json)
         {
             OnLoadFail?.Invoke(json);
@@ -234,7 +233,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Serializes the extended data dictionary to a JSON string for pass-through to the ad SDK server-side verification callback.
         /// </remarks>
         /// <returns>序列化后的 JSON 字符串；如果无扩展数据则返回 null / Serialized JSON string; null if no extended data</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected string SerializeExtraData()
         {
             if (ExtraData.Count == 0)
@@ -253,7 +252,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </remarks>
         /// <param name="key">数据键 / Data key</param>
         /// <returns>指定键对应的值；如果键不存在则返回 null / Value for the specified key; null if the key does not exist</returns>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         protected string GetExtraDataValue(string key)
         {
             ExtraData.TryGetValue(key, out var value);

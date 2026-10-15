@@ -48,6 +48,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="channelId">渠道唯一标识</param>
         /// <param name="displayName">渠道展示名称（用于 UI 展示）</param>
         /// <param name="factory">渠道管理器工厂，编译期类型安全，首次解析时调用并注入强类型配置</param>
+        [UnityEngine.Scripting.Preserve]
         public AdvertisementChannelRegistration(string channelId, string displayName, Func<IAdvertisementManager> factory)
         {
             if (string.IsNullOrEmpty(channelId))

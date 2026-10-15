@@ -28,7 +28,6 @@
 //  ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -38,7 +37,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// <remarks>
     /// Base class for advertisement configuration, carrying parameters needed by advertisement manager initialization.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     [Serializable]
     public abstract class AdvertisementConfig
     {
@@ -48,7 +47,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Whether to enable debug mode.
         /// </remarks>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public bool isDebug;
     }
 }

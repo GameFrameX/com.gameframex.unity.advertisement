@@ -28,7 +28,6 @@
 //  ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -38,7 +37,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// <remarks>
     /// Advertisement manager interface, defining the standard contract for ad initialization, playback, and loading.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public interface IAdvertisementManager
     {
         /// <summary>
@@ -48,7 +47,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Initialize the advertisement manager with a configuration object.
         /// </remarks>
         /// <param name="config">广告配置对象 / Advertisement configuration object</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Initialize(AdvertisementConfig config);
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="adUnitId">广告单元ID / Ad unit ID</param>
         /// <param name="isDebug">是否启用调试模式 / Whether to enable debug mode</param>
         [Obsolete("Use Initialize(AdvertisementConfig) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Initialize(string adUnitId, bool isDebug = false);
 
         /// <summary>
@@ -71,7 +70,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </remarks>
         /// <param name="key">数据键 / Data key</param>
         /// <param name="value">数据值 / Data value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void SetExtraData(string key, string value);
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="playResult">播放结果回调，参数表示是否成功播放 / Play result callback, parameter indicates whether the ad was played successfully</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Play(Action<bool> playResult, string customData = null);
 
         /// <summary>
@@ -93,7 +92,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Play the advertisement with play options.
         /// </remarks>
         /// <param name="option">广告播放选项 / Advertisement play options</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Play(AdvertisementPlayOption option);
 
         /// <summary>
@@ -107,7 +106,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="onShowResult">展示结果回调，参数表示是否完整观看 / Show result callback, parameter indicates whether the ad was fully watched</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null);
 
         /// <summary>
@@ -120,7 +119,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="fail">加载失败回调，参数为失败原因 / Load failure callback, parameter is failure reason</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         void Load(Action<string> success, Action<string> fail, string customData = null);
     }
 }

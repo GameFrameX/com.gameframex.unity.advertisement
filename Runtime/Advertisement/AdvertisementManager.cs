@@ -29,7 +29,6 @@
 
 using System;
 using GameFrameX.Runtime;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -42,7 +41,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// 渠道实现不再各自直接占用模块槽位。实际的渠道调用经 <see cref="AdvertisementRegistry.ResolveManager"/> 互斥解析转发；
     /// 框架关闭时把 Shutdown 一并转发给解析到的渠道管理器（如 csj 的原生 Bridge 释放）。
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     public sealed class AdvertisementManager : BaseAdvertisementManager, IShutdownableModule
     {
         private bool _noChannelWarned;
@@ -51,7 +50,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// 使用配置对象初始化广告管理器，转发给注册表互斥解析到的渠道管理器。
         /// </summary>
         /// <param name="config">广告配置对象 / Advertisement configuration object</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Initialize(AdvertisementConfig config)
         {
             if (config == null)
@@ -68,7 +67,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="adUnitId">广告单元ID / Ad unit ID</param>
         /// <param name="debug">是否启用调试模式 / Whether to enable debug mode</param>
         [Obsolete("Use Initialize(AdvertisementConfig) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Initialize(string adUnitId, bool debug = false)
         {
 #pragma warning disable CS0618
@@ -81,7 +80,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </summary>
         /// <param name="key">数据键 / Data key</param>
         /// <param name="value">数据值 / Data value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void SetExtraData(string key, string value)
         {
             ResolveChannel()?.SetExtraData(key, value);
@@ -93,7 +92,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="playResult">播放结果回调 / Play result callback</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Play(Action<bool> playResult, string customData = null)
         {
 #pragma warning disable CS0618
@@ -105,7 +104,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// 使用播放选项播放广告，转发给注册表互斥解析到的渠道管理器。
         /// </summary>
         /// <param name="option">广告播放选项 / Advertisement play options</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Play(AdvertisementPlayOption option)
         {
             ResolveChannel()?.Play(option);
@@ -119,7 +118,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="onShowResult">展示结果回调 / Show result callback</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult, string customData = null)
         {
 #pragma warning disable CS0618
@@ -134,7 +133,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="fail">加载失败回调 / Load failure callback</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public override void Load(Action<string> success, Action<string> fail, string customData = null)
         {
 #pragma warning disable CS0618
@@ -145,7 +144,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <summary>
         /// 关闭模块：把关闭时机转发给注册表互斥解析到的渠道管理器（渠道自身实现 <c>IShutdownableModule</c> 时生效）。
         /// </summary>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Shutdown()
         {
             (AdvertisementRegistry.ResolveManager() as IShutdownableModule)?.Shutdown();

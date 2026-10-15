@@ -1,12 +1,12 @@
 {
     "name": "com.gameframex.unity.advertisement",
     "displayName": "Game Frame X Advertisement",
-    "category": "Game Framework X",
-    "description": "Game Frame X Advertisement Component",
+    "category": "Game Frame X",
+    "description": "GameFrameX Advertisement — Unity advertisement package providing the IAdvertisementManager abstraction and AdvertisementComponent for quick ad integration on GameFrameX modular architecture. Ships BaseAdvertisementManager, AdvertisementConfig and AdvertisementPlayOption, plus an AdvertisementRegistry that channel packages self-register into via bootstraps with mutually exclusive resolution and explicit channel-id override, without type-name string reflection. Includes built-in reward callback handling for rewarded ads; adapters exist for CSJ, TopOn and WeChat, Douyin, Kuaishou and Alipay Mini Games. Docs: https://gameframex.doc.alianblank.com\n\nGameFrameX Advertisement — Unity 广告功能包，基于 GameFrameX 模块化架构提供 IAdvertisementManager 抽象与 AdvertisementComponent，可快速集成广告功能。包含 BaseAdvertisementManager、AdvertisementConfig、AdvertisementPlayOption，以及由渠道包 Bootstrap 自注册的 AdvertisementRegistry，支持互斥解析与显式渠道 ID 覆盖，无需类型名字符串反射。内置激励视频广告的奖励回调处理；提供 CSJ、TopOn 及微信、抖音、快手、支付宝小游戏渠道适配包。文档：https://gameframex.doc.alianblank.com",
     "version": "2.0.0",
     "unity": "2019.4",
     "keywords": [
-        "Game Framework X"
+        "Game Frame X"
     ],
     "repository": {
         "name": "com.gameframex.unity.advertisement",
@@ -19,7 +19,7 @@
         "url": "https://gameframex.doc.alianblank.com"
     },
     "dependencies": {
-        "com.gameframex.unity": "2.5.4",
+        "com.gameframex.unity": "3.0.0",
         "com.gameframex.unity.event": "2.0.0"
     },
     "devDependencies": {

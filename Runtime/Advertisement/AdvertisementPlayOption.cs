@@ -28,7 +28,6 @@
 //  ==========================================================================================
 
 using System;
-using UnityEngine.Scripting;
 using UnityEngine.Serialization;
 
 namespace GameFrameX.Advertisement.Runtime
@@ -39,7 +38,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// <remarks>
     /// Advertisement play options, used to unify callbacks and extended data during ad playback.
     /// </remarks>
-    [Preserve]
+    [UnityEngine.Scripting.Preserve]
     [Serializable]
     public sealed class AdvertisementPlayOption
     {
@@ -49,7 +48,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked when the ad plays successfully (e.g., reward verification passed), with extended data as the parameter.
         /// </remarks>
-        [Preserve] public Action<string> OnSuccess;
+        [UnityEngine.Scripting.Preserve] public Action<string> OnSuccess;
 
         /// <summary>
         /// 广告播放失败回调，参数为错误信息。
@@ -57,7 +56,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked when the ad fails to play, with error information as the parameter.
         /// </remarks>
-        [Preserve] public Action<string> OnFail;
+        [UnityEngine.Scripting.Preserve] public Action<string> OnFail;
 
         /// <summary>
         /// 广告展示结果回调，参数表示是否成功展示。
@@ -65,7 +64,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Callback invoked with the ad show result, where the parameter indicates whether the ad was successfully displayed.
         /// </remarks>
-        [Preserve] public Action<bool> OnShowResult;
+        [UnityEngine.Scripting.Preserve] public Action<bool> OnShowResult;
 
         /// <summary>
         /// 扩展数据，仅在广告加载（Load）阶段透传到服务端奖励验证回调，加载后设置无效。
@@ -73,7 +72,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Extended data that is passed through to the server-side reward verification callback only during the Load phase; setting it after loading has no effect.
         /// </remarks>
-        [Preserve] public string extraData;
+        [UnityEngine.Scripting.Preserve] public string extraData;
 
         /// <summary>
         /// 自定义数据，用于在广告播放时透传自定义信息。
@@ -81,6 +80,6 @@ namespace GameFrameX.Advertisement.Runtime
         /// <remarks>
         /// Custom data passed through to the ad playback callback.
         /// </remarks>
-        [Preserve] public string customData;
+        [UnityEngine.Scripting.Preserve] public string customData;
     }
 }

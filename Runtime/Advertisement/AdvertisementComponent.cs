@@ -30,7 +30,6 @@
 using System;
 using GameFrameX.Runtime;
 using UnityEngine;
-using UnityEngine.Scripting;
 
 namespace GameFrameX.Advertisement.Runtime
 {
@@ -42,6 +41,7 @@ namespace GameFrameX.Advertisement.Runtime
     /// </remarks>
     [DisallowMultipleComponent]
     [AddComponentMenu("GameFrameX/Advertisement")]
+    [GameFrameXAutoComponent(100)]
     public class AdvertisementComponent : GameFrameworkComponent
     {
         [SerializeField] private bool m_debug = false;
@@ -65,6 +65,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Gets or sets the advertisement configuration object.
         /// </remarks>
         /// <value>广告配置对象 / Advertisement configuration object</value>
+        [UnityEngine.Scripting.Preserve]
         public AdvertisementConfig Config
         {
             get => m_config;
@@ -106,7 +107,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Initialize the advertisement component with a configuration object.
         /// </remarks>
         /// <param name="config">广告配置对象 / Advertisement configuration object</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Initialize(AdvertisementConfig config)
         {
             m_config = config;
@@ -122,7 +123,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="adUnitId">广告位ID / Ad unit ID</param>
         /// <param name="isDebug">是否启用调试模式 / Whether to enable debug mode</param>
         [Obsolete("Use Initialize(AdvertisementConfig) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Initialize(string adUnitId, bool isDebug = false)
         {
             AdUnitId = adUnitId;
@@ -139,7 +140,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// </remarks>
         /// <param name="key">数据键 / Data key</param>
         /// <param name="value">数据值 / Data value</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void SetExtraData(string key, string value)
         {
             Debug.Log($"[AdComponent] SetExtraData: key={key}, value={value ?? "(null)"}, managerType={_advertisementManager?.GetType().FullName ?? "(null)"}");
@@ -156,7 +157,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="fail">展示失败回调，参数为失败原因 / Show failure callback, parameter is failure reason</param>
         /// <param name="onShowResult">展示结果回调，参数表示是否完整观看 / Show result callback, parameter indicates whether the ad was fully watched</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Show(Action<string> success, Action<string> fail, Action<bool> onShowResult)
         {
 #pragma warning disable CS0618
@@ -173,7 +174,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="onShowResult">播放结果回调，参数表示是否成功播放 / Play result callback, parameter indicates whether the ad was played successfully</param>
         /// <param name="customData">自定义数据 / Custom data</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Play(Action<bool> onShowResult, string customData = null)
         {
             _advertisementManager.Play(onShowResult, customData);
@@ -186,7 +187,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// Play the advertisement with play options.
         /// </remarks>
         /// <param name="option">广告播放选项 / Advertisement play options</param>
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Play(AdvertisementPlayOption option)
         {
             _advertisementManager.Play(option);
@@ -201,7 +202,7 @@ namespace GameFrameX.Advertisement.Runtime
         /// <param name="success">加载成功回调，参数为成功信息 / Load success callback, parameter is success information</param>
         /// <param name="fail">加载失败回调，参数为失败原因 / Load failure callback, parameter is failure reason</param>
         [Obsolete("Use Play(AdvertisementPlayOption) instead.")]
-        [Preserve]
+        [UnityEngine.Scripting.Preserve]
         public void Load(Action<string> success, Action<string> fail)
         {
 #pragma warning disable CS0618
