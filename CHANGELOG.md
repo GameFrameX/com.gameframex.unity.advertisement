@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/2.0.0...2.0.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **advertisement:** 添加完整 link.xml 防代码裁剪保护 ([44f5ac1](https://github.com/gameframex/com.gameframex.unity.advertisement/commit/44f5ac1662bbd48fc95205a104b45dc759e7a13f))
+
 # [2.0.0](https://github.com/gameframex/com.gameframex.unity.advertisement/compare/1.5.1...2.0.0) (2026-10-15)
 
 
