@@ -127,6 +127,7 @@ namespace GameFrameX.Advertisement.Runtime
             {
                 manager = registration.Factory();
                 Managers[channelId] = manager;
+                Log.Info("Advertisement manager created : channel '{0}', manager '{1}'.", channelId, manager.GetType().FullName);
             }
 
             return manager;
